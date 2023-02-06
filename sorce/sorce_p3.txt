@@ -1,0 +1,23 @@
+---輸入txt------輸入txt------輸入txt------輸入txt------輸入txt------輸入txt------輸入txt------輸入txt---
+
+JButton catchButton = new JButton("查看明細");
+		catchButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					FileReader fr=new FileReader("明細表2.txt");
+					int x=0;
+					while((x=fr.read())!=-1)
+					{
+						textArea.append(""+(char)x);//文字加總
+					}
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		catchButton.setBounds(65, 6, 100, 29);
+		contentPane.add(catchButton);

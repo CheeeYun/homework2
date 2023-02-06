@@ -1,0 +1,195 @@
+
+-------圖片----------------------圖片----------------------圖片----------------------圖片---------------
+	//		//新增圖片...
+////		JLabel lblNewLabel = new JLabel("");
+////		contentPane.add(lblNewLabel);
+//		Image img_2 = new ImageIcon(this.getClass().getResource("/ad2.png")).getImage();
+//		lblNewLabel.setIcon(new ImageIcon(img_2));
+////		lblNewLabel.setBounds(67, 10, 371, 217);
+////	    register.add(lblNewLabel);
+	
+
+-------輸出txt----------------------輸出txt----------------------輸出txt----------------------輸出------
+
+JButton printButton_1 = new JButton("輸出");
+		printButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FileOutputStream fos;
+				try {
+					fos = new FileOutputStream("明細表2.txt");//輸出成.txt擋
+					OutputStreamWriter osr=new OutputStreamWriter(fos);
+					BufferedWriter bw=new BufferedWriter(osr);
+					String A=layout1.getText();
+					bw.write(A);
+					bw.close();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+
+-------付款\找零\鎖field----------------------付款\找零\鎖field---------------------------------------
+
+JButton changeButton = new JButton("付款");
+		changeButton.setFont(new Font("Lucida Grande", Font.BOLD, 25));
+		changeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int BigMac=Integer.parseInt(bigMacField.getText());//轉乘計算數字
+				int CheeseBurger=Integer.parseInt(cheeseBurgerField.getText());
+				int OFish=Integer.parseInt(oFishField.getText());
+				int Frise=Integer.parseInt(friseField.getText());
+				int Cola=Integer.parseInt(colaField.getText());
+				int ChickenNugget=Integer.parseInt(chickenNuggetField.getText());
+				int Set1=Integer.parseInt(set1Field.getText());
+				int Set2=Integer.parseInt(set2Field.getText());
+				int change=Integer.parseInt(payField.getText());
+				int sum=BigMac*100+CheeseBurger*100+OFish*100+
+                                    Frise*50+Cola*50+ChickenNugget*100+Set1*200+Set2*200;
+				int sum1=(int)(sum*0.8);
+			    int r=change-sum;
+				int r1=change-sum1;
+
+			  String A=(""+(change-sum));
+			  String B=(""+(change-sum1));
+			  if(checkPoint.isSelected()&& r1>=0)
+			     {
+			      layout2.setText("找"+B+"元"+"\n================================"
+                             +"\n1000塊"+r1/1000+"張"
+		                     +"-->500塊"+(r1%1000)/500+"張"
+		                     +"-->100塊"+(r1%1000%500)/100+"張"
+		                     +"\n50塊"+(r1%1000%500%100)/50+"個"
+		                     +"-->10塊"+(r1%1000%500%100%50)/10+"個"
+		                     +"-->5塊"+(r1%1000%500%100%50%10)/5+"個"
+		                     +"-->1塊"+(r1%1000%500%100%50%10%5)/1+"個");
+			     }
+			
+			  else if(r>=0) {
+				  layout2.setText("找"+A+"元"+"\n==============================="
+			                            +"\n1000塊"+r/1000+"張"
+				                    +"-->500塊"+(r%1000)/500+"張"
+						    +"-->100塊"+(r%1000%500)/100+"張"
+						    +"\n50塊"+(r%1000%500%100)/50+"個"
+						    +"-->10塊"+(r%1000%500%100%50)/10+"個"
+						    +"-->5塊"+(r%1000%500%100%50%10)/5+"個"
+						    +"-->1塊"+(r%1000%500%100%50%10%5)/1+"個");
+		           }
+			  else {
+				  layout2.setText("金額不足,無法支付!!!!!!!"
+				  		+ "\n金額不足,無法支付!!!!!!!"
+				  		+ "\n金額不足,無法支付!!!!!!!"
+				  		+ "\n金額不足,無法支付!!!!!!!");
+			       }
+			}
+		});
+		layout1.setEditable(false); //鎖住
+		layout2.setEditable(false);
+		layout3.setEditable(false);
+		changeButton.setBounds(202, 669, 128, 46);
+		panel.add(changeButton);
+
+-------列印----------------------列印----------------------列印----------------------列印---------------
+JButton printButton = new JButton("列印");
+		
+		printButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					 layout1.print();
+					}catch (PrinterException e1) {
+						e1.printStackTrace();
+					}
+			
+				
+			}
+		});
+-------試算----------------------試算----------------------試算----------------------試算---------------
+JButton printButton = new JButton("列印");
+JButton btnNewButton = new JButton("試算");
+		btnNewButton.setVerticalAlignment(SwingConstants.TOP);
+		btnNewButton.setBackground(new Color(254, 255, 255));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int BigMac=Integer.parseInt(bigMacField.getText());//轉乘計算數字
+				int CheeseBurger=Integer.parseInt(cheeseBurgerField.getText());
+				int OFish=Integer.parseInt(oFishField.getText());
+				int Frise=Integer.parseInt(friseField.getText());
+				int Cola=Integer.parseInt(colaField.getText());
+				int ChickenNugget=Integer.parseInt(chickenNuggetField.getText());
+				int Set1=Integer.parseInt(set1Field.getText());
+				int Set2=Integer.parseInt(set2Field.getText());
+			
+				shop  A=new shop(BigMac, CheeseBurger, OFish, Frise, Cola, ChickenNugget, Set1, Set2);
+				String D = 
+						"大麥克共"+BigMac+"個，應付 "+BigMac*100+"元"+
+                                                "\n================================"+
+						"\n吉事堡共"+CheeseBurger+"個，應付 "+
+                                                   CheeseBurger*100+"元"+
+						"\n================================"+
+						"\n麥香魚共"+OFish+"個，應付 "+OFish*100+"元"+
+						"\n================================"+
+						"\n薯 條共"+Frise+"個，應付 "+Frise*50+"元"+
+						"\n================================"+
+						"\n可 樂共"+Cola+"個，應付 "+Cola*50+"元"+
+						"\n================================"+
+						"\n雞 塊共"+ChickenNugget+"個，應付  
+                                                   "+ChickenNugget*100+"元"+                                  
+ 						"\n================================"+
+						"\n一號餐共"+Set1+"個，應付 "+Set1*200+"元"+
+						"\n================================"+
+						"\n二號餐共"+Set2+"個，應付 "+Set2*200+"元";
+				 String E = 
+						"大麥克共"+BigMac+"個，應付 "+BigMac*80+"元"+
+						"\n================================"+
+						"\n吉事堡共"+CheeseBurger+"個，應付 
+                                                "+CheeseBurger*80+"元"+
+						"\n================================"+
+						"\n麥香魚共"+OFish+"個，應付 "+OFish*80+"元"+
+						"\n================================"+
+						"\n薯條共"+Frise+"個，應付 "+Frise*40+"元"+
+						"\n================================"+
+						"\n可 樂共"+Cola+"個，應付 "+Cola*40+"元"+
+						"\n================================"+
+						"\n雞塊共"+ChickenNugget+"個，應付 
+                                                "+ChickenNugget*80+"元"+
+						"\n================================"+
+						"\n一號餐共"+Set1+"個，應付 "+Set1*160+"元"+
+						"\n================================"+
+						"\n二號餐共"+Set2+"個，應付 "+Set2*160+"元";
+				if(checkPoint.isSelected())
+				{
+					String C="\n 總價\n\n"+Integer.toString((int)(0.8*A.show()))+"$";
+					layout3.setText(C);
+					layout1.setText(E);
+				
+					
+				}
+				else 
+				{
+					String C="\n 總價\n\n"+Integer.toString(A.show())+"$";
+					layout3.setText(C);
+					layout1.setText(D);
+					
+				}
+				
+				
+	
+			}
+		});
+---------------返回---------------------------------返回------------------------------返回-----------
+JButton goButton = new JButton(">");
+				goButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						try {
+							print frame = new print();
+							frame.setVisible(true);
+							dispose();// 關閉此頁面
+						} catch (Exception e2) {
+							e2.printStackTrace();
+						}
+					}
+				});
+				goButton.setBounds(410, 6, 48, 29);
+				panel.add(goButton);

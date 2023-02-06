@@ -1,0 +1,62 @@
+
+-------日期---------------
+	 public void clock()//時鐘
+     { 
+	     Thread cclock=new Thread()
+	     {
+		            public void run()
+		            {
+		            	try
+		            	{
+		            		for(;;) 
+                                               {
+		      		                  Calendar cal=new GregorianCalendar();
+		      	                          int day=cal.get(Calendar.DAY_OF_MONTH);
+		      	                          int month=cal.get(Calendar.MONTH)+1;
+		      	                          int year=cal.get(Calendar.YEAR);
+		      	                          int second=cal.get(Calendar.SECOND);
+		      	                          int minute=cal.get(Calendar.MINUTE);
+		      	                          int hour=cal.get(Calendar.HOUR);
+		      	          
+		      	                         clockLabel.setText
+                                                 ("Day:\t\t"+year+"/"+month+"/"+day+
+                                                 "\t\tTime\t\t"+hour+":"+minute+":"+
+                                                 second);
+		      	                         sleep(1000);
+		                               }
+		            	}
+		                catch (InterruptedException e) 
+		            	{
+				  e.printStackTrace();
+			        }
+                             }
+	    };
+	    cclock.start();
+	    }
+
+-------登入切畫面---------------
+
+loginButton = new JButton("登入");
+		loginButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String uname=accountField.getText();
+				String pass=passwordField.getText();
+				
+			if (uname.equals("guest") && pass.equals(""))//帳號密碼
+					{
+				try {
+					test_1 frame = new test_1();
+					frame.setVisible(true);
+					dispose();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+					}
+			else. //跳出Ｍmessage
+			{
+				JOptionPane.showMessageDialog(null, "測試中，帳號輸入guest即可登入。");
+			}
+			}
+		});
+		loginButton.setBounds(85, 217, 75, 29);
+		contentPane.add(loginButton);

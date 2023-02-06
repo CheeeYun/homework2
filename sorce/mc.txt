@@ -1,0 +1,94 @@
+package newShop;
+
+public class nshop {
+	private int cheeseBurger;
+	private int chickenNugget;
+	private int oFish;
+	private int bigMac;
+	private int fries;
+    private int cola;
+    private int set1;
+    private int set2;
+    private int total;
+    //-----------------------
+	public nshop(int bigMac, int cheeseBurger, int oFish, int frise, int cola, int chickenNugget, int set1, int set2) {
+		
+		super();
+		if(cheeseBurger>=0 && chickenNugget>=0 && oFish>=0 && bigMac>=0 && frise>=0 && cola>=0);
+		{
+		this.cheeseBurger = cheeseBurger;
+		this.chickenNugget = chickenNugget;
+		this.oFish = oFish;
+		this.bigMac = bigMac;
+		this.fries = frise;
+		this.cola = cola;
+		this.set1 = set1;
+		this.set2 = set2;
+		this.total = cheeseBurger*10+chickenNugget*10+oFish*10+bigMac*10+frise*10+cola*10+set1*20+set2*20;
+	}
+		//---------------------
+		
+		
+		
+		
+	}
+	public int getCheeseBurger() {
+		return cheeseBurger;
+	}
+	public void setCheeseBurger(int cheeseBurger) {
+		this.cheeseBurger = cheeseBurger;
+	}
+	public int getChickenNugget() {
+		return chickenNugget;
+	}
+	public void setChickenNugget(int chickenNugget) {
+		this.chickenNugget = chickenNugget;
+	}
+	public int getoFish() {
+		return oFish;
+	}
+	public void setoFish(int oFish) {
+		this.oFish = oFish;
+	}
+	public int getBigMac() {
+		return bigMac;
+	}
+	public void setBigMac(int bigMac) {
+		this.bigMac = bigMac;
+	}
+	public int getFries() {
+		return fries;
+	}
+	public void setFries(int fries) {
+		this.fries = fries;
+	}
+	public int getCola() {
+		return cola;
+	}
+	public void setCola(int cola) {
+		this.cola = cola;
+	}
+	public int getSet1() {
+		return set1;
+	}
+	public void setSet1(int set1) {
+		this.set1 = set1;
+	}
+	public int getSet2() {
+		return set2;
+	}
+	public void setSet2(int set2) {
+		this.set2 = set2;
+	}
+
+public String show_total()
+		 {
+	           this.total=cheeseBurger*10+chickenNugget*10+oFish*10+bigMac*10+fries*10+cola*10+set1*20+set2*20;
+	           String total="共計："+this.total+"元";
+	           return total;
+	 }
+		 
+    
+
+}
+

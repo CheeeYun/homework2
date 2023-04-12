@@ -9,4 +9,4 @@
 列印<br></summary><br>
 <h2>明細查詢</h2><br>
 <summary>按下查看明細即可顯示輸出內容</summary></h3>
-<img src="https://drive.google.com/uc?export=view&id=1bU-XC09OiC1UlAMnH-_Dt2uoYkS1jIBe" border="0">
+<img src="https://drive.google.com/uc?export=view&id=1bU-XC09OiC1UlAMnH-_Dt2uoYkS1jIBe" border="0" style="width 100">
